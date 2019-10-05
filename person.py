@@ -47,7 +47,7 @@ def infection():
 
 def survived():
     # check if infected person survived
-    if infected(self.person) == True and is_alive(self.person):
+    if infected(self.person) and is_alive(self.person) == True:
         return True
 
 
