@@ -45,6 +45,11 @@ def infection():
     # test if person is infected
     pass
 
+def survived():
+    # check if infected person survived
+    if infected(self.person) == True and is_alive(self.person):
+        return True
+
 
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''
 def test_vacc_person_instantiation():
