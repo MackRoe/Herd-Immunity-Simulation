@@ -27,35 +27,10 @@ class Person(object):
         '''
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
-        random_mortality_rate = random.randint(1, 100) # Generate a random number
-        if self.infection == None:
-            if random_mortality_rate < self.infection.mortality_rate: # compare to virus's mortality_rate
-                self.is_alive = False
-            else:
-                self.is_vaccinated = True
-                self.infection = None
-        return True
-
-# def is_alive():
-#     # tests if person is alive
-#     pass
-
-
-# def is_vaccinated():
-#     # test if person is vaccinated
-#     pass
-
-
-# def infection():
-#     # test if person is infected
-#     pass
-
-# def did_survive_infection():
-#     # check if infected person survived
-#     if infected(self.person) and is_alive(self.person) == True:
-#         return True
-
-
+        if self.infection is not None: 
+            return random.random() >= self.infection.mortality_rate    
+# thanks @angelinaolmedo7 for helping me to find the random.random() function and make it 
+# into a boolean value for this function.
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''
 def test_vacc_person_instantiation():
     # create some people to test if our init method works as expected
@@ -104,14 +79,10 @@ def test_did_survive_infection():
     if survived:
         assert person._id == 4
         assert person.is_alive is True
-#         # TODO: Write your own assert statements that test
-#         # the values of each attribute for a Person who survived
-        assert person.is_vaccinated is True
-        assert person.infection is None
+#         # TODO: Write your own assert statements that test the values of each attribute for a Person who survived
     else:
         assert person.is_alive is False
 #         # TODO: Write your own assert statements that test
 #         # the values of each attribute for a Person who did not survive
         assert person.is_vaccinated is False
         assert person.infection is virus
-#         pass
