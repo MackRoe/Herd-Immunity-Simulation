@@ -27,33 +27,33 @@ class Person(object):
         '''
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
-        random_mortality_rate = randint(1, 100) # Generate a random number
+        random_mortality_rate = random.randint(1, 100) # Generate a random number
         if self.infection == None:
-            if random_mortality_rate > self.infection.mortality_rate: # compare to virus's mortality_rate
+            if random_mortality_rate < self.infection.mortality_rate: # compare to virus's mortality_rate
                 self.is_alive = False
             else:
                 self.is_vaccinated = True
                 self.infection = None
-        return self.is_alive() == True
-
-def is_alive():
-    # tests if person is alive
-    pass
-
-
-def is_vaccinated():
-    # test if person is vaccinated
-    pass
-
-
-def infection():
-    # test if person is infected
-    pass
-
-def survived():
-    # check if infected person survived
-    if infected(self.person) and is_alive(self.person) == True:
         return True
+
+# def is_alive():
+#     # tests if person is alive
+#     pass
+
+
+# def is_vaccinated():
+#     # test if person is vaccinated
+#     pass
+
+
+# def infection():
+#     # test if person is infected
+#     pass
+
+# def did_survive_infection():
+#     # check if infected person survived
+#     if infected(self.person) and is_alive(self.person) == True:
+#         return True
 
 
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''
@@ -92,23 +92,26 @@ def test_sick_person_instantiation():
     assert person.infection is virus
 
 
-# def test_did_survive_infection():
+def test_did_survive_infection():
 #     # TODO: Create a Virus object to give a Person object an infection
-#     virus = Virus("Dysentery", 0.7, 0.2)
+    virus = Virus("Dysentery", 0.7, 0.2)
 #     # TODO: Create a Person object and give them the virus infection
-#     person = Person(4, False, virus)
+    person = Person(4, False, virus)
 
 #     # Resolve whether the Person survives the infection or not
-#     survived = person.did_survive_infection()
+    survived = person.did_survive_infection()
 #     # Check if the Person survived or not
-#     if survived:
-#         assert person.is_alive is True
+    if survived:
+        assert person._id == 4
+        assert person.is_alive is True
 #         # TODO: Write your own assert statements that test
 #         # the values of each attribute for a Person who survived
-#         # assert ...
-#     else:
-#         assert person.is_alive is False
+        assert person.is_vaccinated is True
+        assert person.infection is None
+    else:
+        assert person.is_alive is False
 #         # TODO: Write your own assert statements that test
 #         # the values of each attribute for a Person who did not survive
-#         # assert ...
+        assert person.is_vaccinated is False
+        assert person.infection is virus
 #         pass
