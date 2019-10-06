@@ -29,12 +29,19 @@ class Person(object):
         # TODO:  Finish this method. Should return a Boolean
         random_mortality_rate = randint(1, 100) # Generate a random number
         if self.infection == None:
+            """ # note-em: If self.infection is None, the Virus object has not attached to 
+            the Person object # """
             if random_mortality_rate > self.infection.mortality_rate: # compare to virus's mortality_rate
                 self.is_alive = False
             else:
                 self.is_vaccinated = True
                 self.infection = None
         return self.is_alive() == True
+
+    def resolve_infection():
+        # should show false if person died from infection
+        if did_survive_infection():
+            did_die_from_infection = False
 
 def is_alive():
     # tests if person is alive
@@ -48,7 +55,11 @@ def is_vaccinated():
 
 def infection():
     # test if person is infected
-    pass
+    # random person has one of a hundred interactions in time step
+    for interactions.range(99):
+        if not self.vaccinated and not self.infected:
+            self.infected = True
+
 
 def survived():
     # check if infected person survived
