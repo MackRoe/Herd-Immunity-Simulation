@@ -27,10 +27,14 @@ class Person(object):
         '''
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
-        if self.infection is not None: 
-            return random.random() >= self.infection.mortality_rate    
-# thanks @angelinaolmedo7 for helping me to find the random.random() function and make it 
+        if self.infection is not None:
+            return random.random() >= self.infection.mortality_rate
+# thanks @angelinaolmedo7 for helping me to find the random.random() function and make it
 # into a boolean value for this function.
+
+
+
+
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''
 def test_vacc_person_instantiation():
     # create some people to test if our init method works as expected

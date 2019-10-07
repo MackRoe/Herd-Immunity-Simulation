@@ -61,6 +61,11 @@ class Simulation(object):
                 list: A list of Person objects.
 
         '''
+        for person in self.population:
+            
+        self.population == Person()
+
+        return self.population
         # TODO: Finish this method!  This method should be called when the simulation
         # begins, to create the population that will be used. This method should return
         # an array filled with Person objects that matches the specifications of the
@@ -153,20 +158,21 @@ class Simulation(object):
 
 
 if __name__ == "__main__":
-    params = sys.argv[1:]
-    virus_name = str(params[0])
-    repro_num = float(params[1])
-    mortality_rate = float(params[2])
+    # params = sys.argv[1:]
+    # virus_name = str(params[0])
+    # repro_num = float(params[1])
+    # mortality_rate = float(params[2])
 
-    pop_size = int(params[3])
-    vacc_percentage = float(params[4])
+    # pop_size = int(params[3])
+    # vacc_percentage = float(params[4])
 
-    if len(params) == 6:
-        initial_infected = int(params[5])
-    else:
-        initial_infected = 1
+    # if len(params) == 6:
+    #     initial_infected = int(params[5])
+    # else:
+    #     initial_infected = 1
 
-    virus = Virus(name, repro_rate, mortality_rate)
-    sim = Simulation(pop_size, vacc_percentage, initial_infected, virus)
+    # virus = Virus(name, repro_rate, mortality_rate)
+    # sim = Simulation(pop_size, vacc_percentage, initial_infected, virus)
 
-    sim.run()
+    # sim.run()
+print(self._create_population())
