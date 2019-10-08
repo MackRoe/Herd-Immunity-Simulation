@@ -164,14 +164,19 @@ class Simulation(object):
 
         for random_person in self.population:
             if random_person.is_vaccinated == True:
+                self.logger.log_interaction(person, random_person, False, True, False)
                 return None
 
             if random_person.infection == virus:
+                self.logger.log_interaction(person, random_person, True, False, False)
                 return None
 
             if random_person.is_vaccinated == False:
                 if random.random() < virus.repro_rate:
+                    self.logger.log_interaction(person, random_person, True, False, True)
                     self.newly_infected.append(random_person._id)
+                else:
+                    self.logger.log_interaction(person, random_person, False, False, False)
 
         log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
 
