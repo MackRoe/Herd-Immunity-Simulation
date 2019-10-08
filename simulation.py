@@ -170,8 +170,10 @@ class Simulation(object):
                 return None
 
             if random_person.is_vaccinated == False:
-                random.random() < virus.repro_rate
-                self.newly_infected.append(random_person._id)
+                if random.random() < virus.repro_rate:
+                    self.newly_infected.append(random_person._id)
+
+        log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
 
 
         # TODO: Finish this method.
