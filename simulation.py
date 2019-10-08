@@ -37,7 +37,6 @@ class Simulation(object):
         # At the end of each time step, call self._infect_newly_infected()
         # and then reset .newly_infected back to an empty list.
         # self.logger = None
-        self.logger = Logger(self.file_name)   # Logger object binded to self.logger
         self.population = [] # List of Person objects
         self.pop_size = pop_size # Int
         self.next_person_id = 0 # Int
@@ -48,7 +47,10 @@ class Simulation(object):
         self.vacc_percentage = vacc_percentage # float between 0 and 1
         self.total_dead = 0 # Int
         self.file_name = "{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(
-            virus_name, population_size, vacc_percentage, initial_infected)
+            virus, pop_size, vacc_percentage, initial_infected)
+        self.logger = Logger(self.file_name)   # Logger object binded to self.logger
+        
+        
         self.newly_infected = []
 
     def create_population(self, initial_infected):
@@ -82,6 +84,8 @@ class Simulation(object):
             else:
                 self.population.append(Person(self.next_person_id, False, None))#otherwise we add a person object who is unvaccinated
                 self.next_person_id += 1
+        
+        return self.population
 
 
     def _simulation_should_continue(self):
@@ -183,5 +187,14 @@ if __name__ == "__main__":
     sim = Simulation(pop_size, vacc_percentage, initial_infected, virus)
 
     sim.run()
+
+    # test creat population function:
+# if __name__ == "__main__":
+
+#     virus = Virus("Ebola", .25, .7)
+#     sim = Simulation(30, .9, virus, 1)
+
+#     print(sim.create_population(1))
+ 
 
 
