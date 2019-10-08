@@ -1,3 +1,5 @@
+import os
+
 class Logger(object):
     ''' Utility class responsible for logging all interactions during the simulation. '''
     # TODO: Write a test suite for this class to make sure each method is working
@@ -17,10 +19,13 @@ class Logger(object):
         The simulation class should use this method immediately to log the specific
         parameters of the simulation as the first line of the file.
         '''
+
         first_line = str((f"Population: {pop_size} Percentage of popultion that is vaccinated: {vacc_percentage} Virus Name: {virus_name}" 
                     f" Virus Mortality Rate: {mortality_rate} Virus Reproduction Rate: {repro_rate}\n"))
-        with open(self.file_name, "w") as file:
+        filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
+        with open(filepath+self.file_name, "w") as file:
             file.write(first_line)
+
         # TODO: Finish this method. This line of metadata should be tab-delimited
         # it should create the text file that we will store all logs in.
         # TIP: Use 'w' mode when you open the file. For all other methods, use
