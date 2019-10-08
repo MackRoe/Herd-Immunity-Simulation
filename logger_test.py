@@ -12,5 +12,8 @@ print(person3.did_survive_infection())
 person4 = Person(4, False, virus2)
 print(person4.did_survive_infection())
 
+logger = Logger()
+logger.write_metadata(100, .9, "Ebola", .8, .25)
+
 
 

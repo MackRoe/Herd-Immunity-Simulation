@@ -20,8 +20,8 @@ class Logger(object):
         parameters of the simulation as the first line of the file.
         '''
 
-        first_line = str((f"Population: {pop_size} Percentage of popultion that is vaccinated: {vacc_percentage} Virus Name: {virus_name}" 
-                    f" Virus Mortality Rate: {mortality_rate} Virus Reproduction Rate: {repro_rate}\n"))
+        first_line = str((f"Population: {pop_size}\nPercentage of popultion that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
+                    f"Virus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
         filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
         with open(filepath+self.file_name, "w") as file:
             file.write(first_line)
@@ -82,8 +82,4 @@ class Logger(object):
         # NOTE: Here is an opportunity for a stretch challenge!
         pass
 
-if __name__ == "__main__":
-    logger = Logger()
-    logger.write_metadata(100000, .9, "Ebola", .8, .25)
-
-    
+# if __name__ == "__main__":

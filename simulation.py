@@ -126,7 +126,7 @@ class Simulation(object):
         self.create_population()
 
         should_continue = self.simulation_should_continue()
-        
+
 
         while should_continue:
         # TODO: for every iteration of this loop, call self.time_step() to compute another
@@ -165,8 +165,10 @@ class Simulation(object):
         for random_person in self.population:
             if random_person.is_vaccinated == True:
                 return None
+
             if random_person.infection == virus:
                 return None
+
             if random_person.is_vaccinated == False:
                 random.random() < virus.repro_rate
                 self.newly_infected.append(random_person._id)
@@ -183,8 +185,7 @@ class Simulation(object):
             #     than repro_rate, random_person's ID should be appended to
             #     Simulation object's newly_infected array, so that their .infected
             #     attribute can be changed to True at the end of the time step.
-        # TODO: Call slogger method during this method.
-        pass
+        # TODO: Call logger method during this method.
 
     def infect_newly_infected(self):
         ''' This method should iterate through the list of ._id stored in self.newly_infected
