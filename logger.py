@@ -6,25 +6,27 @@ class Logger(object):
     # PROTIP: Write your tests before you solve each function, that way you can
     # test them one by one as you write your class.
 
-    def __init__(self, file_name):
+    def __init__(self, file_name="logger.txt"):
         # TODO:  Finish this initialization method. The file_name passed should be the
         # full file name of the file that the logs will be written to.
-        self.file_name = None
-        
+        self.file_name = file_name
 
     def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate,
-                       basic_repro_num):
+                       repro_rate):
         '''
         The simulation class should use this method immediately to log the specific
         parameters of the simulation as the first line of the file.
         '''
+        first_line = str((f"Population: {pop_size} Percentage of popultion that is vaccinated: {vacc_percentage} Virus Name: {virus_name}" 
+                    f" Virus Mortality Rate: {mortality_rate} Virus Reproduction Rate: {repro_rate}\n"))
+        with open(self.file_name, "w") as file:
+            file.write(first_line)
         # TODO: Finish this method. This line of metadata should be tab-delimited
         # it should create the text file that we will store all logs in.
         # TIP: Use 'w' mode when you open the file. For all other methods, use
         # the 'a' mode to append a new log to the end, since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
 
     def log_interaction(self, person, random_person, random_person_sick=None,
                         random_person_vacc=None, did_infect=None):
@@ -74,3 +76,9 @@ class Logger(object):
         # new one begins.
         # NOTE: Here is an opportunity for a stretch challenge!
         pass
+
+if __name__ == "__main__":
+    logger = Logger()
+    logger.write_metadata(100000, .9, "Ebola", .8, .25)
+
+    

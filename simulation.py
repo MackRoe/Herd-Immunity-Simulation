@@ -122,7 +122,11 @@ class Simulation(object):
         # HINT: You may want to call the logger's log_time_step() method at the end of each time step.
         # TODO: Set this variable using a helper
         time_step_counter = 0
-        should_continue = None
+
+        self.create_population()
+
+        should_continue = self.simulation_should_continue()
+        
 
         while should_continue:
         # TODO: for every iteration of this loop, call self.time_step() to compute another
@@ -158,6 +162,16 @@ class Simulation(object):
         assert person.is_alive == True
         assert random_person.is_alive == True
 
+        for random_person in self.population:
+            if random_person.is_vaccinated == True:
+                return None
+            if random_person.infection == virus:
+                return None
+            if random_person.is_vaccinated == False:
+                random.random() < virus.repro_rate
+                self.newly_infected.append(random_person._id)
+
+
         # TODO: Finish this method.
         #  The possible cases you'll need to cover are listed below:
             # random_person is vaccinated:
@@ -172,13 +186,18 @@ class Simulation(object):
         # TODO: Call slogger method during this method.
         pass
 
-    def _infect_newly_infected(self):
+    def infect_newly_infected(self):
         ''' This method should iterate through the list of ._id stored in self.newly_infected
         and update each Person object with the disease. '''
+        for id in self.newly_infected:
+            for person in self.population:
+                if person._id == id:
+                    person.infection = self.virus
+        self.newly_infected = []
+
         # TODO: Call this method at the end of every time step and infect each Person.
         # TODO: Once you have iterated through the entire list of self.newly_infected, remember
-        # to reset self.newly_infected back to an empty list.
-        pass
+        # to reset self.newly_infected back to an empty list
 
 
 if __name__ == "__main__":
