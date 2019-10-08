@@ -96,17 +96,18 @@ class Simulation(object):
                 bool: True for simulation should continue, False if it should end.
         '''
         dead_count = []
-        continue_sim = True
         for person in self.population:
-            if person.did_survive_infection() == False:
+            if person.is_alive == False:
                 dead_count.append(person)
 
         if len(dead_count) == self.pop_size: # if the whole population is dead
-            continue_sim = False #stop simulation
+            return False #stop simulation
+        
         elif self.current_infected == 0: #if no one's infected, stop sim
-            continue_sim = False
+            return False
+        
         else:
-            continue_sim = True
+            return True #continue sim
         # TODO: Complete this helper method.  Returns a Boolean.
 
     def run(self):
