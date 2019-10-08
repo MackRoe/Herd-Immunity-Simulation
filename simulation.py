@@ -84,19 +84,30 @@ class Simulation(object):
             else:
                 self.population.append(Person(self.next_person_id, False, None))#otherwise we add a person object who is unvaccinated
                 self.next_person_id += 1
-        
+
         return self.population
 
 
-    def _simulation_should_continue(self):
+    def simulation_should_continue(self):
         ''' The simulation should only end if the entire population is dead
         or everyone is vaccinated.
 
             Returns:
                 bool: True for simulation should continue, False if it should end.
         '''
+        dead_count = []
+        continue_sim = True
+        for person in self.population:
+            if person.did_survive_infection() == False:
+                dead_count.append(person)
+
+        if len(dead_count) == self.pop_size: # if the whole population is dead
+            continue_sim = False #stop simulation
+        elif self.current_infected == 0: #if no one's infected, stop sim
+            continue_sim = False
+        else:
+            continue_sim = True
         # TODO: Complete this helper method.  Returns a Boolean.
-        pass
 
     def run(self):
         ''' This method should run the simulation until all requirements for ending
@@ -123,7 +134,7 @@ class Simulation(object):
         in the simulation.
 
         This includes:
-            1. 100 total interactions with a randon person for each infected person
+            1. 100 total interactions with a random person for each infected person
                 in the population
             2. If the person is dead, grab another random person from the population.
                 Since we don't interact with dead people, this does not count as an interaction.
