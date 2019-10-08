@@ -49,8 +49,8 @@ class Simulation(object):
         self.file_name = "{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(
             virus, pop_size, vacc_percentage, initial_infected)
         self.logger = Logger(self.file_name)   # Logger object binded to self.logger
-        
-        
+
+
         self.newly_infected = []
 
     def create_population(self, initial_infected):
