@@ -101,5 +101,5 @@ if __name__ == "__main__":
     logger = Logger("logger.txt")
     logger.write_metadata(100000, .9, "Ebola", .8, .25)
     person = Person(1, False)
-    random_person = Person(2, False)
-    logger.log_interaction(person, random_person, True, False, False)
+    random_person = Person(2, True)
+    logger.log_interaction(person, random_person, False, False, False)
