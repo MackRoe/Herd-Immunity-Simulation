@@ -1,0 +1,5 @@
+Population: 100000
+Percentage of population that is vaccinated: 0.9
+Virus Name: Ebola
+Virus Mortality Rate: 0.7
+Virus Reproduction Rate: 0.25
