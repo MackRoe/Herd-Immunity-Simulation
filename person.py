@@ -29,7 +29,7 @@ class Person(object):
         # TODO:  Finish this method. Should return a Boolean
         if self.infection is not None:
             if random.random() > self.infection.mortality_rate:
-                self.vaccinated = True
+                self.is_vaccinated = True
                 self.infection = None
                 return True
             else:

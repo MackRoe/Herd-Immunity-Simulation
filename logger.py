@@ -44,13 +44,12 @@ class Logger(object):
 
         or the other edge cases:
         '''
-        did_infect =  f"{person._id} infects {random_person._id} \n"
-
+        infected_person =  f"{person._id} infects {random_person._id} \n"
         already_sick = f"{person._id} didn't infect {random_person._id} because already sick \n"
         vaccinated = f"{person._id} didn't infect {random_person._id} because vaccinated \n"
         with open(self.file_name, "a") as file:
             if did_infect == True:
-                file.write(did_infect)
+                file.write(infected_person)
             elif random_person_sick == True:
                 file.write(already_sick)
             else:
@@ -61,7 +60,7 @@ class Logger(object):
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
 
-    def log_infection_survival(self, person, did_die_from_infection):
+    def log_infection_survival(self, person, did_survive_from_infection):
         ''' The Simulation object uses this method to log the results of every
         call of a Person object's .did_survive_infection() method.
 
@@ -72,9 +71,9 @@ class Logger(object):
         # should be False.  Otherwise, did_die_from_infection should be True.
         # Append the results of the infection to the logfile
         with open(self.file_name, "a") as file:
-            if did_die_from_infection == False:
+            if did_survive_from_infection == False:
                 file.write(f"{person._id} died from infection.\n")
-            elif did_die_from_infection == None:
+            elif did_survive_from_infection == None:
                 file.write(f"{person._id} has not been infected yet.\n")
             else:
                 file.write(f"{person._id} survived the infection.\n")
@@ -99,7 +98,7 @@ class Logger(object):
         # new one begins.
         # NOTE: Here is an opportunity for a stretch challenge!
         with open(self.file_name, "a") as file:
-            file.write(f"Time step {self.time_step_number} ended, beginning {self.time_step_number + 1}\n")
+            file.write(f"Time step {time_step_number} ended, beginning {time_step_number + 1}\n")
 
 # if __name__ == "__main__":
 #     logger = Logger("logger.txt")
