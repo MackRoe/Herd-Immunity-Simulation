@@ -115,7 +115,7 @@ class Simulation(object):
         the simulation are met.
         '''
         # TODO: Finish this method.  To simplify the logic here, use the helper method
-        # _simulation_should_continue() to tell us whether or not we should continue
+        # simulation_should_continue() to tell us whether or not we should continue
         # the simulation and run at least 1 more time_step.
 
         # TODO: Keep track of the number of time steps that have passed.
