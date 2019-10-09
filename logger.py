@@ -15,15 +15,13 @@ class Logger(object):
         # full file name of the file that the logs will be written to.
         self.file_name = file_name
 
-    def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate,
-                       repro_rate):
+    def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate, repro_rate):
         '''
         The simulation class should use this method immediately to log the specific
         parameters of the simulation as the first line of the file.
         '''
 
-        first_line = str((f"Population: {pop_size}\nPercentage of population that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
-                    f"Virus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
+        first_line = str((f"Population: {pop_size}\nPercentage of population that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\nVirus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
         # filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
         # filepath = '/'
         # with open(filepathself.file_name, "w") as file:
@@ -38,8 +36,7 @@ class Logger(object):
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
 
-    def log_interaction(self, person, random_person, random_person_sick=None,
-                        random_person_vacc=None, did_infect=None):
+    def log_interaction(self, person, random_person, random_person_sick=None,random_person_vacc=None, did_infect=None):
         '''
         The Simulation object should use this method to log every interaction
         a sick person has during each time step.
@@ -63,11 +60,10 @@ class Logger(object):
         # represent all the possible edge cases. Use the values passed along with each person,
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
-        pass
 
     def log_infection_survival(self, person, did_die_from_infection):
         ''' The Simulation object uses this method to log the results of every
-        call of a Person object's .resolve_infection() method.
+        call of a Person object's .did_survive_infection() method.
 
         The format of the log should be:
             "{person.ID} died from infection\n" or "{person.ID} survived infection.\n"
@@ -75,7 +71,14 @@ class Logger(object):
         # TODO: Finish this method. If the person survives, did_die_from_infection
         # should be False.  Otherwise, did_die_from_infection should be True.
         # Append the results of the infection to the logfile
-        pass
+        with open(self.file_name, "a") as file:
+            if did_die_from_infection == False:
+                file.write(f"{person._id} died from infection.\n")
+            elif did_die_from_infection == None:
+                file.write(f"{person._id} has not been infected yet.\n")
+            else:
+                file.write(f"{person._id} survived the infection.\n")
+
 
     def log_time_step(self, time_step_number):
         ''' STRETCH CHALLENGE DETAILS:
@@ -95,11 +98,12 @@ class Logger(object):
         # TODO: Finish this method. This method should log when a time step ends, and a
         # new one begins.
         # NOTE: Here is an opportunity for a stretch challenge!
-        pass
+        with open(self.file_name, "a") as file:
+            file.write(f"Time step {self.time_step_number} ended, beginning {self.time_step_number + 1}\n")
 
-if __name__ == "__main__":
-    logger = Logger("logger.txt")
-    logger.write_metadata(100000, .9, "Ebola", .8, .25)
-    person = Person(1, False)
-    random_person = Person(2, False)
-    logger.log_interaction(person, random_person, True, False, False)
+# if __name__ == "__main__":
+#     logger = Logger("logger.txt")
+#     logger.write_metadata(100000, .9, "Ebola", .8, .25)
+#     person = Person(1, False)
+#     random_person = Person(2, False)
+#     logger.log_interaction(person, random_person, True, False, False)
