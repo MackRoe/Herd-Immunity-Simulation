@@ -22,7 +22,7 @@ class Logger(object):
 
         first_line = str((f"Population: {pop_size}\nPercentage of popultion that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
                     f"Virus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
-        filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
+        filepath = '/'
         with open(filepath+self.file_name, "w") as file:
             file.write(first_line)
 
@@ -82,4 +82,6 @@ class Logger(object):
         # NOTE: Here is an opportunity for a stretch challenge!
         pass
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
+    logger = Logger()
+    logger.write_metadata(100000, .9, "Ebola", .8, .25)
