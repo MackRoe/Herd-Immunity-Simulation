@@ -122,10 +122,22 @@ class Simulation(object):
         # HINT: You may want to call the logger's log_time_step() method at the end of each time step.
         # TODO: Set this variable using a helper
         time_step_counter = 0
-
+        self.time_step()
         self.create_population()
 
         should_continue = self.simulation_should_continue()
+        if should_continue == True:
+            self.logger.log_time_step(time_step_counter)
+            time_step_counter +=1
+            return True
+        
+        for person in self.population:
+            if not person.infection:
+                self total_infected += 1
+
+        self.infect_newly_infected()
+
+        print("Entire population is either dead or vaccinated after {} timesteps".format(time_step_counter -1))
 
 
         while should_continue:
