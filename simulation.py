@@ -137,7 +137,7 @@ class Simulation(object):
     def time_step(self):
         ''' This method should contain all the logic for computing one time step
         in the simulation.
-
+        
         This includes:
             1. 100 total interactions with a random person for each infected person
                 in the population
@@ -146,6 +146,14 @@ class Simulation(object):
             3. Otherwise call simulation.interaction(person, random_person) and
                 increment interaction counter by 1.
             '''
+        count = 0
+        while count < 99:
+            if not random_person.is_alive:
+                random_person = random.choice(self.population)
+            interaction(person, random_person)
+            count =+ 1
+                
+
         # TODO: Finish this method.
         pass
 
