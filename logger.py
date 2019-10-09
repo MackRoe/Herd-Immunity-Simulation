@@ -24,16 +24,11 @@ class Logger(object):
 
         first_line = str((f"Population: {pop_size}\nPercentage of population that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
                     f"Virus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
-<<<<<<< HEAD
-        filepath = '/'
-        with open(filepath+self.file_name, "w") as file:
-=======
         # filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
         # filepath = '/'
         # with open(filepathself.file_name, "w") as file:
         #     file.write(first_line)
         with open(self.file_name, "w") as file:
->>>>>>> 83c1c7ee9e98d4e3b09560f7b66ff82a8cd398ab
             file.write(first_line)
 
         # TODO: Finish this method. This line of metadata should be tab-delimited
@@ -103,13 +98,8 @@ class Logger(object):
         pass
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    logger = Logger()
-    logger.write_metadata(100000, .9, "Ebola", .8, .25)
-=======
     logger = Logger("logger.txt")
     logger.write_metadata(100000, .9, "Ebola", .8, .25)
     person = Person(1, False)
-    random_person = Person(2, True)
-    logger.log_interaction(person, random_person, False, False, False)
->>>>>>> 83c1c7ee9e98d4e3b09560f7b66ff82a8cd398ab
+    random_person = Person(2, False)
+    logger.log_interaction(person, random_person, True, False, False)

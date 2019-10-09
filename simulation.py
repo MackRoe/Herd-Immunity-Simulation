@@ -102,10 +102,10 @@ class Simulation(object):
 
         if len(dead_count) == self.pop_size: # if the whole population is dead
             return False #stop simulation
-        
+
         elif self.current_infected == 0: #if no one's infected, stop sim
             return False
-        
+
         else:
             return True #continue sim
         # TODO: Complete this helper method.  Returns a Boolean.
