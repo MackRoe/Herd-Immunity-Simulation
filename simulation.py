@@ -176,7 +176,7 @@ class Simulation(object):
                 else:
                     self.logger.log_interaction(person, random_person, False, False, False)
 
-        log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
+        # log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
 
 
         # TODO: Finish this method.
