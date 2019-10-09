@@ -49,8 +49,8 @@ class Simulation(object):
         self.file_name = "{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(
             virus, pop_size, vacc_percentage, initial_infected)
         self.logger = Logger(self.file_name)   # Logger object binded to self.logger
-        
-        
+
+
         self.newly_infected = []
 
     def create_population(self, initial_infected):
@@ -165,11 +165,9 @@ class Simulation(object):
         for random_person in self.population:
             if random_person.is_vaccinated == True:
                 self.logger.log_interaction(person, random_person, False, True, False)
-                return None
 
-            if random_person.infection == virus:
+            if random_person.infection == self.virus:
                 self.logger.log_interaction(person, random_person, True, False, False)
-                return None
 
             if random_person.is_vaccinated == False:
                 if random.random() < virus.repro_rate:
@@ -178,7 +176,7 @@ class Simulation(object):
                 else:
                     self.logger.log_interaction(person, random_person, False, False, False)
 
-        log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
+        # log_interaction(person, random_person, random_person_sick, random_person_vacc, did_infect)
 
 
         # TODO: Finish this method.

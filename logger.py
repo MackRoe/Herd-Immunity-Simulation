@@ -1,3 +1,5 @@
+from person import Person
+from virus import Virus
 import os
 
 class Logger(object):
@@ -8,7 +10,7 @@ class Logger(object):
     # PROTIP: Write your tests before you solve each function, that way you can
     # test them one by one as you write your class.
 
-    def __init__(self, file_name="logger.txt"):
+    def __init__(self, file_name):
         # TODO:  Finish this initialization method. The file_name passed should be the
         # full file name of the file that the logs will be written to.
         self.file_name = file_name
@@ -20,10 +22,18 @@ class Logger(object):
         parameters of the simulation as the first line of the file.
         '''
 
-        first_line = str((f"Population: {pop_size}\nPercentage of popultion that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
+        first_line = str((f"Population: {pop_size}\nPercentage of population that is vaccinated: {vacc_percentage}\nVirus Name: {virus_name}\n" 
                     f"Virus Mortality Rate: {mortality_rate}\nVirus Reproduction Rate: {repro_rate}\n"))
+<<<<<<< HEAD
         filepath = '/'
         with open(filepath+self.file_name, "w") as file:
+=======
+        # filepath = '/Users/makeschoolloaner/dev/CS1.1/Herd-Immunity-Simulation/'
+        # filepath = '/'
+        # with open(filepathself.file_name, "w") as file:
+        #     file.write(first_line)
+        with open(self.file_name, "w") as file:
+>>>>>>> 83c1c7ee9e98d4e3b09560f7b66ff82a8cd398ab
             file.write(first_line)
 
         # TODO: Finish this method. This line of metadata should be tab-delimited
@@ -39,11 +49,21 @@ class Logger(object):
         The Simulation object should use this method to log every interaction
         a sick person has during each time step.
 
-        The format of the log should be: "{person.ID} infects {random_person.ID} \n"
 
         or the other edge cases:
-            "{person.ID} didn't infect {random_person.ID} because {'vaccinated' or 'already sick'} \n"
         '''
+        did_infect =  f"{person._id} infects {random_person._id} \n"
+
+        already_sick = f"{person._id} didn't infect {random_person._id} because already sick \n"
+        vaccinated = f"{person._id} didn't infect {random_person._id} because vaccinated \n"
+        with open(self.file_name, "a") as file:
+            if did_infect == True:
+                file.write(did_infect)
+            elif random_person_sick == True:
+                file.write(already_sick)
+            else:
+                file.write(vaccinated)
+
         # TODO: Finish this method. Think about how the booleans passed (or not passed)
         # represent all the possible edge cases. Use the values passed along with each person,
         # along with whether they are sick or vaccinated when they interact to determine
@@ -53,7 +73,7 @@ class Logger(object):
     def log_infection_survival(self, person, did_die_from_infection):
         ''' The Simulation object uses this method to log the results of every
         call of a Person object's .resolve_infection() method.
- 
+
         The format of the log should be:
             "{person.ID} died from infection\n" or "{person.ID} survived infection.\n"
         '''
@@ -83,5 +103,13 @@ class Logger(object):
         pass
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     logger = Logger()
     logger.write_metadata(100000, .9, "Ebola", .8, .25)
+=======
+    logger = Logger("logger.txt")
+    logger.write_metadata(100000, .9, "Ebola", .8, .25)
+    person = Person(1, False)
+    random_person = Person(2, True)
+    logger.log_interaction(person, random_person, False, False, False)
+>>>>>>> 83c1c7ee9e98d4e3b09560f7b66ff82a8cd398ab
