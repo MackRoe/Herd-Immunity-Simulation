@@ -98,16 +98,6 @@ class Logger(object):
         # TODO: Finish this method. This method should log when a time step ends, and a
         # new one begins.
         # NOTE: Here is an opportunity for a stretch challenge!
-<<<<<<< HEAD
-        pass
-
-if __name__ == "__main__":
-    logger = Logger("logger.txt")
-    logger.write_metadata(100000, .9, "Ebola", .8, .25)
-    person = Person(1, False)
-    random_person = Person(2, True)
-    logger.log_interaction(person, random_person, False, False, False)
-=======
         with open(self.file_name, "a") as file:
             file.write(f"Time step {self.time_step_number} ended, beginning {self.time_step_number + 1}\n")
 
@@ -117,4 +107,3 @@ if __name__ == "__main__":
 #     person = Person(1, False)
 #     random_person = Person(2, False)
 #     logger.log_interaction(person, random_person, True, False, False)
->>>>>>> 68a69d144477988adc2d283b9888d7f532d203f2

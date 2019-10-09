@@ -145,6 +145,7 @@ class Simulation(object):
             if simulation_continue == True:
                 self.logger.log_time_step(time_step_counter)
                 time_step_counter +=1
+                
         print(f"{self.total_dead} people have died from infection.\n")
         print(f"The simulation is ending after {time_step_counter -1} turns.")
         print(f"Entire population is either dead or vaccinated after {time_step_counter - 1} timesteps.")
