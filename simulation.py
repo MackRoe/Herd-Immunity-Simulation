@@ -42,7 +42,8 @@ class Simulation(object):
         self.current_infected = 0 # Int
         self.vacc_percentage = vacc_percentage # float between 0 and 1
         self.total_dead = 0 # Int
-        self.file_name = f"logs/{virus_name}_simulation_pop_{pop_size}_vp_{vacc_percentage}_infected_{initial_infected}.txt"
+        self.file_name = f"logs/{self.virus}_simulation_pop_{pop_size}_vp_{vacc_percentage}_infected_{initial_infected}.txt"
+        # change recommended by TA
         self.logger = Logger(self.file_name)   # Logger object binded to self.logger
 
 
@@ -62,14 +63,19 @@ class Simulation(object):
         # begins, to create the population that will be used. 
 
         ppl_infected = 0
-        while len(self.population) != self.pop_size: #while the number of person objects in the population list is not equal to the population size
-            if ppl_infected != self.initial_infected: #if the number of ppl infected is not equal to the number passed in to initial_infected
+        # (per TA) calculate number of people who need to be vaccinated based on the percentage
+        # removed: random.random() < self.vacc_percentage
+        
+        peeps_vaccinated = self.pop_size * self.vacc_percentage
+        while len(self.population) != self.pop_size:  # while the number of person objects in the population list is not equal to the population size
+            if ppl_infected != self.initial_infected:  # if the number of ppl infected is not equal to the number passed in to initial_infected
                 self.population.append(Person(self.next_person_id, False, self.virus)) # we add a person to the population list who is unvaccinated
                 ppl_infected += 1
                 self.next_person_id += 1
-            elif random.random() < self.vacc_percentage: #if the random float is less than the percentage of people who are vaccinated in the population
+            elif peeps_vaccinated > 0:  # if the random float is less than the percentage of people who are vaccinated in the population
                 self.population.append(Person(self.next_person_id, True, None))#we add a person object who is vaccinated
                 self.next_person_id += 1
+                peeps_vaccinated -= 1
             else:
                 self.population.append(Person(self.next_person_id, False, None))#otherwise we add a person object who is unvaccinated
                 self.next_person_id += 1
@@ -230,5 +236,5 @@ if __name__ == "__main__":
 
 #     print(sim.create_population(1))
 
-
+# --- to run: python3 simulation.py virus, repro, mort, pop, vacc
 
