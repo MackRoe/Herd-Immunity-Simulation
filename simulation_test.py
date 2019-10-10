@@ -26,8 +26,22 @@ class xfunction(unittest.TestCase):
 
     def test_run():
         assert not self.total_infected == 0
+
+    def test_time_step():
+        assert not interaction_count == 0
+        assert not self.total_dead == 0
+
+    def test_interaction(person, random_person):
+        assert not person.is_alive == False
+        assert not random_person.is_alive == False
+
+    def test_infect_newly_infected():
+        assert person.infection == self.virus
+
+
     
     
+
     
 
 
