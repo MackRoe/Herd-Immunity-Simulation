@@ -38,31 +38,10 @@ class xfunction(unittest.TestCase):
         for person in pop_test_result:
             if person.is_vaccinated:
                 check_vacc_count += 1
-        
+
         assert check_vacc_count == 3
 
-    def test_simulation_should_continue(self):
-        # parameters/args should ONLY include 'self' for test_ (per TA)
-        pass
 
-    def test_run(self):
-        # assert not self.total_infected == 0
-        pass
-
-    def test_time_step(self):
-        # assert not interaction_count == 0
-        # assert not self.total_dead == 0
-        pass
-
-    def test_interaction(self):
-        # assert not person.is_alive == False
-        # assert not random_person.is_alive == False
-        pass
-
-    def test_infect_newly_infected(self):
-        # assert person.infection == self.virus
-        pass
-    
 
 if __name__ == '__main__':
     unittest.main()

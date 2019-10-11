@@ -1,7 +1,6 @@
 import random
 random.seed(42)
 from virus import Virus
-import pytest
 
 
 class Person(object):

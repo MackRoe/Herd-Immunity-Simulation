@@ -1,5 +1,0 @@
-Population: 850000
-Percentage of population that is vaccinated: 0.0
-Virus Name: Anthrax
-Virus Mortality Rate: 0.2
-Virus Reproduction Rate: 0.65

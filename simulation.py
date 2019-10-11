@@ -60,12 +60,12 @@ class Simulation(object):
 
         '''
         # TODO: Finish this method!  This method should be called when the simulation
-        # begins, to create the population that will be used. 
+        # begins, to create the population that will be used.
 
         ppl_infected = 0
         # (per TA) calculate number of people who need to be vaccinated based on the percentage
         # removed: random.random() < self.vacc_percentage
-        
+
         peeps_vaccinated = self.pop_size * self.vacc_percentage
         while len(self.population) != self.pop_size:  # while the number of person objects in the population list is not equal to the population size
             if ppl_infected != self.initial_infected:  # if the number of ppl infected is not equal to the number passed in to initial_infected
