@@ -17,14 +17,16 @@ class xfunction(unittest.TestCase):
         assert sim.create_population(1) is []
 
     def test_simulation_init(self):
-        sim = Simulation(100, 0.75, 1, "AIDS")
+        virus = Virus("AIDS", .25, .7)
+        sim = Simulation(100, 0.75, 1, virus)
         assert sim.pop_size == 100
         assert sim.vacc_percentage == 0.75
         assert sim.initial_infected == 1
-        assert sim.virus == "AIDS"
+        assert sim.virus == virus
 
     def test_create_population(self):
-        sim = Simulation(4, 0.75, 1, "AIDS")
+        virus = Virus("AIDS", .25, .7)
+        sim = Simulation(4, 0.75, 1, virus)
         expected_pop = [Person(0, True, None), Person(1, True, None),
                         Person(2, True, None), Person(3, False, "AIDS")]
         pop_test_result = sim.create_population(1)
